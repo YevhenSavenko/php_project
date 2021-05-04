@@ -14,6 +14,10 @@ class File
         $toDay = date("Y-m-d H:i:s", time());
         $filesList = [];
 
+        if (!file_exists(self::PATH_UPLOAD)) {
+            return ['status' => 'not_found'];
+        }
+
         if (!file_exists(self::PATH_BACKUP)) {
             mkdir(self::PATH_BACKUP, 0777, true);
         }
@@ -45,6 +49,32 @@ class File
             }
 
             return ['status' => 'ok_files', 'files' => $filesList];
+        }
+
+        return ['' => 0];
+    }
+
+
+    public function deteteFiles()
+    {
+        if (!file_exists(self::PATH_UPLOAD)) {
+            return ['status' => 'not_found'];
+        }
+
+        $files =  array_diff(scandir(self::PATH_UPLOAD), ['..', '.']);
+
+        if (!empty($files)) {
+            $count = 0;
+            foreach ($files as $nameFile) {
+                $pathToFile = sprintf('%s/%s', self::PATH_UPLOAD, $nameFile);
+
+                if (substr($nameFile, -4) === '.txt' && trim(file_get_contents($pathToFile)) === 'test') {
+                    unlink($pathToFile);
+                    $count++;
+                }
+            }
+
+            return ['status' => 'ok_delete', 'count' => $count];
         }
 
         return ['' => 0];

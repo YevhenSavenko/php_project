@@ -16,6 +16,14 @@
             </div>
             <?php break; ?>
         <?php
+        case 'not_found': ?>
+            <div class="row justify-content-center mb-3">
+                <div class="alert alert-danger col-md-5 text-center" role="alert">
+                    Not found path to files
+                </div>
+            </div>
+            <?php break; ?>
+        <?php
         case 'movement_problem': ?>
             <div class="row justify-content-center mb-3">
                 <div class="alert alert-danger col-md-5 text-center" role="alert">
@@ -37,6 +45,16 @@
                 <div class="alert alert-success col-md-5 text-center" role="alert">
                     <?php if (isset($files)) : ?>
                         In backup was moved <?= count($files) > 1 || count($files) === 0 ? count($files) . ' files' :  count($files) . ' file' ?>
+                    <?php endif ?>
+                </div>
+            </div>
+            <?php break; ?>
+        <?php
+        case 'ok_delete': ?>
+            <div class="row justify-content-center mb-3">
+                <div class="alert alert-success col-md-5 text-center" role="alert">
+                    <?php if (isset($count)) : ?>
+                        Has been removed <?= $count > 1 || $count === 0 ? $count . ' files' :  $count . ' file' ?>
                     <?php endif ?>
                 </div>
             </div>

@@ -32,7 +32,7 @@
             <?= System\Url::getLink($this->getBP() . '/file/index', 'Task6', 'btn btn-dark') ?>
         </div>
         <div class="links__item col-md-2 text-uppercase">
-            <?= System\Url::getLink($this->getBP() . '/product/index', 'Task7', 'btn btn-dark') ?>
+            <?= System\Url::getLink($this->getBP() . '/file/delete', 'Task7', 'btn btn-dark') ?>
         </div>
         <div class="links__item col-md-2 text-uppercase">
             <?= System\Url::getLink($this->getBP() . 'number/index', 'Task8', 'btn btn-dark') ?>

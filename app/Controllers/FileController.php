@@ -16,4 +16,13 @@ class FileController extends Controller
         $view = new View('task6');
         $view->render('task6', $files);
     }
+
+    public function actionDelete()
+    {
+        $file = new File();
+        $filesDelete = $file->deteteFiles();
+
+        $view = new View('task7');
+        $view->render('task7', $filesDelete);
+    }
 }
