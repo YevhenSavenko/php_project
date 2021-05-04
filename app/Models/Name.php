@@ -101,7 +101,12 @@ class Name
         }
 
         if (is_array($processed) && count($processed) > 0) {
-            return $this->getStr($processed);
+            return [
+                'sorted' => $this->getStr($processed),
+                'status' => 'ok'
+            ];
         }
+
+        return ['' => 0];
     }
 }

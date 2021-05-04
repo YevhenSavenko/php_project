@@ -14,6 +14,6 @@ class ProductController extends Controller
         $productReturned = $product->sortProduct();
 
         $view = new View('task2');
-        $view->render('task2', ['products' => $productReturned]);
+        $view->render('task2', $productReturned);
     }
 }

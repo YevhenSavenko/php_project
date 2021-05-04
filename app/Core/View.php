@@ -24,8 +24,6 @@ class View
             }
         }
 
-        var_dump($status);
-
         require_once $fullPathTemplate;
     }
 

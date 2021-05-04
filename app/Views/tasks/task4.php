@@ -1,5 +1,5 @@
-<?php if (isset($error) && !empty($error)) : ?>
-    <?= 'hi' ?>
+<?php if (isset($status) && !empty($status)) : ?>
+    <?php require_once ROOT . '/app/Views/static/status.php' ?>
 <?php endif ?>
 
 <div class="row justify-content-center">

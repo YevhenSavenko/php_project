@@ -1,17 +1,5 @@
-<?php if (isset($nums) && $nums === 'empty_fields') : ?>
-    <div class="row justify-content-center mb-3">
-        <div class="alert alert-danger col-md-5 text-center" role="alert">
-            Field is empty
-        </div>
-    </div>
-<?php endif ?>
-
-<?php if (isset($nums) && !empty($nums) && $nums !== 'empty_fields') :  ?>
-    <div class="row justify-content-center mb-3">
-        <div class="alert alert-success col-md-5 text-center" role="alert">
-            Processing successful
-        </div>
-    </div>
+<?php if (isset($status) && !empty($status)) : ?>
+    <?php require_once ROOT . '/app/Views/static/status.php' ?>
 <?php endif ?>
 
 <div class="form__wrapper row justify-content-center">
@@ -25,39 +13,39 @@
     </form>
 </div>
 
-<?php if (isset($nums) && $nums !== 'empty_fields') : ?>
+<?php if (isset($data) && is_array($data) && count($data) > 1) : ?>
     <div class="row justify-content-center">
         <div class="col-md-5 mt-5">
             <p>
                 Sum numbers:
                 <span class="fw-bold">
-                    <?= $nums['sum'] ?>
+                    <?= $sum ?>
                 </span>
             </p>
             <p>
                 Average:
                 <span class="fw-bold">
-                    <?= $nums['average'] ?>
+                    <?= $average ?>
                 </span>
             </p>
             <p>
                 Even nums:
                 <span class="fw-bold">
-                    <?= $nums['evenOdd']['even']['numsEven'] !== '' ? $nums['evenOdd']['even']['numsEven'] : 'No nums' ?>
+                    <?= $evenOdd['even']['numsEven'] !== '' ? $evenOdd['even']['numsEven'] : 'No nums' ?>
                 </span>.
                 Count even nums:
                 <span class="fw-bold">
-                    <?= $nums['evenOdd']['even']['countEven'] ?>
+                    <?= $evenOdd['even']['countEven'] ?>
                 </span>
             </p>
             <p>
                 Odd nums:
                 <span class="fw-bold">
-                    <?= $nums['evenOdd']['odd']['numsOdd'] !== '' ? $nums['evenOdd']['odd']['numsOdd'] : 'No nums' ?>
+                    <?= $evenOdd['odd']['numsOdd'] !== '' ? $evenOdd['odd']['numsOdd'] : 'No nums' ?>
                 </span>.
                 Count odd nums:
                 <span class="fw-bold">
-                    <?= $nums['evenOdd']['odd']['countOdd'] ?>
+                    <?= $evenOdd['odd']['countOdd'] ?>
                 </span>
             </p>
         </div>

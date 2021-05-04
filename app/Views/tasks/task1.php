@@ -1,17 +1,5 @@
-<?php if (isset($sorted) && $sorted === 'empty_fields') : ?>
-    <div class="row justify-content-center mb-3">
-        <div class="alert alert-danger col-md-5 text-center" role="alert">
-            Field is empty
-        </div>
-    </div>
-<?php endif ?>
-
-<?php if (isset($sorted) && !empty($sorted) && $sorted !== 'empty_fields') :  ?>
-    <div class="row justify-content-center mb-3">
-        <div class="alert alert-success col-md-5 text-center" role="alert">
-            Sorting was successful
-        </div>
-    </div>
+<?php if (isset($status)) : ?>
+    <?php require_once ROOT . '/app/Views/static/status.php' ?>
 <?php endif ?>
 
 <div class="form__wrapper row justify-content-center">

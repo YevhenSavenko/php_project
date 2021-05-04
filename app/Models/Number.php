@@ -54,6 +54,14 @@ class Number
         }
 
         if (is_array($crushedNum) && count($crushedNum) >= 1) {
+
+            $isNums = CheckManager::checkNumber($crushedNum);
+
+            if ($isNums !== 0) {
+                return $isNums;
+            }
+
+
             $sum = $this->getSumNumber($crushedNum);
             $average = $this->getAverageNum($sum, count($crushedNum));
             $evenOdd = $this->checkEvenOddNums($crushedNum);
@@ -62,8 +70,11 @@ class Number
                 'sum' => $sum,
                 'average' => $average,
                 'evenOdd' => $evenOdd,
+                'status' => 'ok'
             ];
         }
+
+        return ['' => 0];
     }
 
     private function calculatePhibonacci(int $qty, int $first = 0, int $second = 1)
@@ -94,23 +105,27 @@ class Number
         $processed = CheckManager::checkPOST('show-nums');
 
         if ($processed) {
-            return ['error' => $processed];
+            return $processed;
         }
 
-        if (isset($_POST['number-form']) && preg_match('/^\+?\d+$/', $_POST['number-form'])) {
-            $phibonacci = $this->calculatePhibonacci((int)$_POST['number-form'] - 1);
-            $phibonacciRecursion = [];
+        if (isset($_POST['number-form'])) {
+            if (preg_match('/^\+?\d+$/', $_POST['number-form'])) {
+                $phibonacci = $this->calculatePhibonacci((int)$_POST['number-form'] - 1);
+                $phibonacciRecursion = [];
 
-            for ($i = 0; $i < $_POST['number-form']; $i++) {
-                $phibonacciRecursion[] = $this->calculatePhibonacciRecursion($i);
+                for ($i = 0; $i < $_POST['number-form']; $i++) {
+                    $phibonacciRecursion[] = $this->calculatePhibonacciRecursion($i);
+                }
+
+                return [
+                    'classicMethod' => $phibonacci,
+                    'recursionMethod' => implode(', ', $phibonacciRecursion)
+                ];
+            } else {
+                return ['status' => 'no_number'];
             }
-
-            return [
-                'classicMethod' => $phibonacci,
-                'recursionMethod' => implode(', ', $phibonacciRecursion)
-            ];
-        } else {
-            return ['error' => 'no number'];
         }
+
+        return ['' => 0];
     }
 }

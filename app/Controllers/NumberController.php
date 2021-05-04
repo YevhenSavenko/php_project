@@ -14,7 +14,7 @@ class NumberController extends Controller
         $data = $num->calculateInputData();
 
         $view = new View('task3');
-        $view->render('task3', ['nums' => $data]);
+        $view->render('task3', $data);
     }
 
     public function actionPhibonacci()
