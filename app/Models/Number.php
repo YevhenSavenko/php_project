@@ -119,7 +119,8 @@ class Number
 
                 return [
                     'classicMethod' => $phibonacci,
-                    'recursionMethod' => implode(', ', $phibonacciRecursion)
+                    'recursionMethod' => implode(', ', $phibonacciRecursion),
+                    'status' => 'ok'
                 ];
             } else {
                 return ['status' => 'no_number'];
