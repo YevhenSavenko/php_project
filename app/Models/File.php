@@ -8,6 +8,7 @@ class File
 {
     const PATH_UPLOAD = ROOT . '/app/storage/upload';
     const PATH_BACKUP = ROOT . '/app/storage/backup';
+    const PATH_OUTPUT = ROOT . '/app/storage/output';
 
     public function createBackup()
     {
@@ -78,5 +79,34 @@ class File
         }
 
         return ['' => 0];
+    }
+
+    public function remakeFile()
+    {
+        $pathSourse = self::PATH_UPLOAD . '/sourse.txt';
+
+        if (!file_exists($pathSourse)) {
+            return ['status' => 'not_found'];
+        }
+
+        $strContent = trim(file_get_contents($pathSourse));
+
+        if (empty($strContent)) {
+            return ['status' => 'no_content'];
+        }
+
+        $strDest = implode('', array_reverse(str_split($strContent)));
+
+        if (!file_exists(self::PATH_OUTPUT)) {
+            return ['status' => 'not_found'];
+        }
+
+        file_put_contents(self::PATH_OUTPUT . '/dest.txt', $strDest);
+
+        return [
+            'originalContent' => $strContent,
+            'remakeContent' => $strDest,
+            'status' => 'ok'
+        ];
     }
 }

@@ -10,8 +10,8 @@ class FileController extends Controller
 {
     public function actionIndex()
     {
-        $file = new File();
-        $files = $file->createBackup();
+        $objFile = new File();
+        $files = $objFile->createBackup();
 
         $view = new View('task6');
         $view->render('task6', $files);
@@ -19,10 +19,19 @@ class FileController extends Controller
 
     public function actionDelete()
     {
-        $file = new File();
-        $filesDelete = $file->deteteFiles();
+        $objFile = new File();
+        $filesDelete = $objFile->deteteFiles();
 
         $view = new View('task7');
         $view->render('task7', $filesDelete);
+    }
+
+    public function actionRemake()
+    {
+        $objFile = new File();
+        $filesRemake = $objFile->remakeFile();
+
+        $view = new View('task8');
+        $view->render('task8', $filesRemake);
     }
 }

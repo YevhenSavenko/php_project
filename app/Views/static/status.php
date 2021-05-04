@@ -32,6 +32,14 @@
             </div>
             <?php break; ?>
         <?php
+        case 'no_content': ?>
+            <div class="row justify-content-center mb-3">
+                <div class="alert alert-danger col-md-5 text-center" role="alert">
+                    No content in this file
+                </div>
+            </div>
+            <?php break; ?>
+        <?php
         case 'ok': ?>
             <div class="row justify-content-center mb-3">
                 <div class="alert alert-success col-md-5 text-center" role="alert">
