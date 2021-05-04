@@ -11,18 +11,18 @@ class ProductController extends Controller
     public function actionIndex()
     {
         $product = new Product();
-        $productReturned = $product->getSortedProducts();
+        $productsReturned = $product->getSortedProducts();
 
         $view = new View('task2');
-        $view->render('task2', $productReturned);
+        $view->render('task2', $productsReturned);
     }
 
     public function actionSort()
     {
         $product = new Product();
-        $productReturned = $product->sortProductWithDiscount();
+        $productsReturned = $product->sortProductWithDiscount();
 
         $view = new View('task5');
-        $view->render('task5', $productReturned);
+        $view->render('task5', $productsReturned);
     }
 }

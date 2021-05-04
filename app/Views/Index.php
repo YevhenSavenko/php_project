@@ -29,7 +29,7 @@
     </div>
     <div class="row justify-content-evenly text-center">
         <div class="links__item col-md-2 text-uppercase">
-            <?= System\Url::getLink($this->getBP() . '/name/index', 'Task6', 'btn btn-dark') ?>
+            <?= System\Url::getLink($this->getBP() . '/file/index', 'Task6', 'btn btn-dark') ?>
         </div>
         <div class="links__item col-md-2 text-uppercase">
             <?= System\Url::getLink($this->getBP() . '/product/index', 'Task7', 'btn btn-dark') ?>
